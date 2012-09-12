@@ -6,7 +6,7 @@ namespace FizzBuzz.Core
     {
         public static FizzBuzzArgs Parse(string[] args)
         {
-            throw new NotImplementedException();
+            return Args.Configuration.Configure<FizzBuzzArgs>().CreateAndBind(args);
         }
     }
 }
