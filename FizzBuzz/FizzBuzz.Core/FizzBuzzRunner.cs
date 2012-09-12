@@ -9,18 +9,21 @@ namespace FizzBuzz.Core
     {
         public Func<IConsoleWriter> Writer = () => new ConsoleWriter();
 
-        public void Run()
+        public void Run(int lower, int upper)
         {
             for (int i = 1; i <= 100; i++)
             {
-                string result = "";
+                string result = null;
 
                 if (i % 3 == 0)
                     result += "Fizz";
                 
                 if (i % 5 == 0)
                     result += "Buzz";
-                
+
+                if (result == null)
+                    result = i.ToString();
+
                 Writer().WriteLine(result);
             }
         }
