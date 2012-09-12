@@ -62,7 +62,7 @@ local.properties
 *.vspscc
 .builds
 *.dotCover
-*.DotSettings.User
+*.DotSettings.user
 *.log
 *.suo
 
