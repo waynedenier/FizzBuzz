@@ -11,7 +11,10 @@ namespace FizzBuzz.Core
 
         public void Run()
         {
-            // do nothing
+            for (int i = 0; i < 100; i++)
+            {
+                Writer().WriteLine("foo");
+            }
         }
     }
 }

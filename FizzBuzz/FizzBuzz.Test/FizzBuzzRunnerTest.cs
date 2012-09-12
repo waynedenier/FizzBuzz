@@ -12,7 +12,7 @@ namespace FizzBuzz.Test
     [TestClass]
     public class FizzBuzzRunnerTest
     {
-        private MockRepository _mockRepository = new MockRepository();
+        private readonly MockRepository _mockRepository = new MockRepository();
 
         [TestMethod]
         public void When_Run_Is_Called_Should_Write_100_Lines()
@@ -21,16 +21,24 @@ namespace FizzBuzz.Test
             var runner = new FizzBuzzRunner();
 
             // set up writer to track number of lines writen
-            var consoleWriter = _mockRepository.Stub<IConsoleWriter>();
-            int linesPrinted = 0;
-            consoleWriter.Stub(x => x.WriteLine(null)).IgnoreArguments().WhenCalled((x) => linesPrinted++);
-            runner.Writer = () => consoleWriter;
+            var mockConsoleWriter = new MockConsoleWriter();
+            runner.Writer = () => mockConsoleWriter;
 
             // run fizz buzz
             runner.Run();
 
-            // should have writen 100 lines
-            linesPrinted.ShouldEqual(100);
+            // check lines
+            mockConsoleWriter.LinesWriten.ShouldEqual(100);
+        }
+    }
+
+    public class MockConsoleWriter : IConsoleWriter
+    {
+        public int LinesWriten = 0;
+
+        public void WriteLine(string line)
+        {
+            LinesWriten++;
         }
     }
 }
