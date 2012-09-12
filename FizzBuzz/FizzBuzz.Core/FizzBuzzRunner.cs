@@ -11,9 +11,12 @@ namespace FizzBuzz.Core
 
         public void Run()
         {
-            for (int i = 0; i < 100; i++)
+            for (int i = 1; i <= 100; i++)
             {
-                Writer().WriteLine("foo");
+                if(i % 3 == 0)
+                    Writer().WriteLine("Fizz");
+                else
+                    Writer().WriteLine("foo");
             }
         }
     }
