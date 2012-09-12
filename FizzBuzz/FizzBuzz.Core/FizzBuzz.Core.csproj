@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArgumentParser.cs" />
     <Compile Include="ConsoleWriter.cs" />
+    <Compile Include="FizzBuzzArgs.cs" />
     <Compile Include="FizzBuzzRunner.cs" />
     <Compile Include="IConsoleWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

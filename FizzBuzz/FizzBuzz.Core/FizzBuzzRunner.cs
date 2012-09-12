@@ -9,9 +9,9 @@ namespace FizzBuzz.Core
     {
         public Func<IConsoleWriter> Writer = () => new ConsoleWriter();
 
-        public void Run(int lower, int upper)
+        public void Run(FizzBuzzArgs args)
         {
-            for (int i = lower; i <= upper; i++)
+            for (int i = args.Lower; i <= args.Upper; i++)
             {
                 string result = null;
 

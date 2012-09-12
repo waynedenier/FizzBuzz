@@ -31,7 +31,7 @@ namespace FizzBuzz.Test
         public void When_Run_Is_Called_Should_Write_100_Lines()
         {
             // run fizz buzz
-            _runner.Run(1, 100);
+            _runner.Run(new FizzBuzzArgs() { Lower = 1, Upper = 100 });
 
             // check lines
             _mockConsoleWriter.LinesWriten.ShouldEqual(100);
@@ -41,7 +41,7 @@ namespace FizzBuzz.Test
         public void When_Run_Is_Called_Should_Write_Number_of_Lines_based_on_first_and_second_arg()
         {
             // run fizz buzz
-            _runner.Run(25,300);
+            _runner.Run(new FizzBuzzArgs() { Lower = 25, Upper = 300 });
 
             // check lines
             _mockConsoleWriter.LinesWriten.ShouldEqual(276);
@@ -51,7 +51,7 @@ namespace FizzBuzz.Test
         public void When_Run_Is_Called_Values_Divisable_By_3_Should_Print_Fizz()
         {
             // run fizz buzz
-            _runner.Run(1,100);
+            _runner.Run(new FizzBuzzArgs() { Lower = 1, Upper = 100 });
 
             // check lines
             Assert.IsTrue(_mockConsoleWriter.Lines.Count >= 9);
@@ -64,7 +64,7 @@ namespace FizzBuzz.Test
         public void When_Run_Is_Called_Values_Divisable_By_5_Should_Print_Buzz()
         {
             // run fizz buzz
-            _runner.Run(1,100);
+            _runner.Run(new FizzBuzzArgs() { Lower = 1, Upper = 100 });
 
             // check lines
             Assert.IsTrue(_mockConsoleWriter.Lines.Count >= 20);
@@ -77,7 +77,7 @@ namespace FizzBuzz.Test
         public void When_Run_Is_Called_Values_Divisable_By_3_and_5_Should_Print_FizzBuzz()
         {
             // run fizz buzz
-            _runner.Run(1,100);
+            _runner.Run(new FizzBuzzArgs() { Lower = 1, Upper = 100 });
 
             // check lines
             Assert.IsTrue(_mockConsoleWriter.Lines.Count >= 45);
