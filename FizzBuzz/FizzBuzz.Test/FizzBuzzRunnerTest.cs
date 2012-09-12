@@ -85,6 +85,19 @@ namespace FizzBuzz.Test
             _mockConsoleWriter.Lines[29].ShouldEqual("FizzBuzz");
             _mockConsoleWriter.Lines[44].ShouldEqual("FizzBuzz");
         }
+
+        [TestMethod]
+        public void When_Run_Is_Called_With_FizzToken_New_Token_Used_For_Divisable_By_3()
+        {
+            // run fizz buzz
+            _runner.Run(new FizzBuzzArgs() { Lower = 1, Upper = 100, FizzToken = "foo"});
+
+            // check lines
+            Assert.IsTrue(_mockConsoleWriter.Lines.Count >= 9);
+            _mockConsoleWriter.Lines[2].ShouldEqual("foo");
+            _mockConsoleWriter.Lines[5].ShouldEqual("foo");
+            _mockConsoleWriter.Lines[8].ShouldEqual("foo");
+        }
     }
 
     public class MockConsoleWriter : IConsoleWriter
