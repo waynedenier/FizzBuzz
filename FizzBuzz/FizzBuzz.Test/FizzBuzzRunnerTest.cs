@@ -50,6 +50,18 @@ namespace FizzBuzz.Test
             _mockConsoleWriter.Lines[8].ShouldEqual("Fizz");
         }
 
+        [TestMethod]
+        public void When_Run_Is_Called_Values_Divisable_By_5_Should_Print_Buzz()
+        {
+            // run fizz buzz
+            _runner.Run();
+
+            // check lines
+            Assert.IsTrue(_mockConsoleWriter.Lines.Count >= 15);
+            _mockConsoleWriter.Lines[4].ShouldEqual("Buzz");
+            _mockConsoleWriter.Lines[9].ShouldEqual("Buzz");
+            _mockConsoleWriter.Lines[14].ShouldEqual("Buzz");
+        }
     }
 
     public class MockConsoleWriter : IConsoleWriter
