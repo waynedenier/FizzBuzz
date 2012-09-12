@@ -5,7 +5,7 @@ namespace FizzBuzz.Core
 {
     public class OutputWriter : IOutputWriter
     {
-        public WriteMode Mode { get; set; }
+        private WriteMode _mode;
         public StringBuilder Builder { get; set; }
 
         public OutputWriter()
@@ -13,11 +13,16 @@ namespace FizzBuzz.Core
             Builder = new StringBuilder();
         }
 
+        public void SetMode(WriteMode mode)
+        {
+            _mode = mode;
+        }
+
         public void WriteLine(string line)
         {
-            if (Mode == WriteMode.File)
+            if (_mode == WriteMode.File)
                 Builder.AppendLine(line);
-            else if (Mode == WriteMode.Console)
+            else if (_mode == WriteMode.Console)
                 Console.WriteLine(line);
         }
 

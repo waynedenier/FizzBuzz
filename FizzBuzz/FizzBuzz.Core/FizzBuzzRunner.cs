@@ -7,10 +7,17 @@ namespace FizzBuzz.Core
 {
     public class FizzBuzzRunner
     {
-        public Func<IOutputWriter> Writer = () => new OutputWriter();
+        public IOutputWriter Writer;
+
+        public FizzBuzzRunner()
+        {
+            Writer = new OutputWriter();
+        }
 
         public void Run(FizzBuzzArgs args)
         {
+            Writer.SetMode((!string.IsNullOrWhiteSpace(args.OutputPath)) ? WriteMode.File : WriteMode.Console);
+
             for (int i = args.Lower; i <= args.Upper; i++)
             {
                 string result = null;
@@ -24,11 +31,11 @@ namespace FizzBuzz.Core
                 if (result == null)
                     result = i.ToString();
 
-                Writer().WriteLine(result);
+                Writer.WriteLine(result);
             }
 
             if(!string.IsNullOrWhiteSpace(args.OutputPath))
-                Writer().WriteFile(args.OutputPath);
+                Writer.WriteFile(args.OutputPath);
         }
     }
 }

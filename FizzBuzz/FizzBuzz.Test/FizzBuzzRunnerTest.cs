@@ -24,7 +24,7 @@ namespace FizzBuzz.Test
 
             // set up writer to track number of lines writen
             _mockOutputWriter = new MockOutputWriter();
-            _runner.Writer = () => _mockOutputWriter;
+            _runner.Writer = _mockOutputWriter;
         }
 
         [TestMethod]
@@ -130,6 +130,11 @@ namespace FizzBuzz.Test
     {
         public int LinesWriten = 0;
         public List<string> Lines = new List<string>();
+
+        public void SetMode(WriteMode mode)
+        {
+            // do nothing
+        }
 
         public void WriteLine(string line)
         {

@@ -15,6 +15,7 @@ namespace FizzBuzz
             
             runner.Run(parsedArgs);
 
+            Console.WriteLine("Finished! Press any key...");
             Console.Read();
         }
     }
