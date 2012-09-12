@@ -57,10 +57,10 @@ namespace FizzBuzz.Test
             _runner.Run();
 
             // check lines
-            Assert.IsTrue(_mockConsoleWriter.Lines.Count >= 15);
+            Assert.IsTrue(_mockConsoleWriter.Lines.Count >= 20);
             _mockConsoleWriter.Lines[4].ShouldEqual("Buzz");
             _mockConsoleWriter.Lines[9].ShouldEqual("Buzz");
-            _mockConsoleWriter.Lines[14].ShouldEqual("Buzz");
+            _mockConsoleWriter.Lines[19].ShouldEqual("Buzz");
         }
     }
 

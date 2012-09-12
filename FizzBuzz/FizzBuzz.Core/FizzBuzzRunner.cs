@@ -13,8 +13,10 @@ namespace FizzBuzz.Core
         {
             for (int i = 1; i <= 100; i++)
             {
-                if(i % 3 == 0)
+                if (i % 3 == 0)
                     Writer().WriteLine("Fizz");
+                else if (i % 5 == 0)
+                    Writer().WriteLine("Buzz");
                 else
                     Writer().WriteLine("foo");
             }

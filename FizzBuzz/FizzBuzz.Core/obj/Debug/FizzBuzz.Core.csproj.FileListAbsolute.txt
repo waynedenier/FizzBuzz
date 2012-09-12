@@ -1,5 +1,0 @@
-C:\Users\Wayne\Desktop\Documents\GitHub\FizzBuzz\FizzBuzz\FizzBuzz.Core\bin\Debug\FizzBuzz.Core.dll
-C:\Users\Wayne\Desktop\Documents\GitHub\FizzBuzz\FizzBuzz\FizzBuzz.Core\bin\Debug\FizzBuzz.Core.pdb
-C:\Users\Wayne\Desktop\Documents\GitHub\FizzBuzz\FizzBuzz\FizzBuzz.Core\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Wayne\Desktop\Documents\GitHub\FizzBuzz\FizzBuzz\FizzBuzz.Core\obj\Debug\FizzBuzz.Core.dll
-C:\Users\Wayne\Desktop\Documents\GitHub\FizzBuzz\FizzBuzz\FizzBuzz.Core\obj\Debug\FizzBuzz.Core.pdb
