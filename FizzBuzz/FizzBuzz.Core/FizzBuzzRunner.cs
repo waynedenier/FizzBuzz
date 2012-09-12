@@ -16,7 +16,7 @@ namespace FizzBuzz.Core
                 string result = null;
 
                 if (i % 3 == 0)
-                    result += "Fizz";
+                    result += args.FizzToken;
                 
                 if (i % 5 == 0)
                     result += "Buzz";
