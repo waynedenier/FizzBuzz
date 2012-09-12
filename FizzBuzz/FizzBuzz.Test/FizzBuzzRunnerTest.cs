@@ -111,6 +111,19 @@ namespace FizzBuzz.Test
             _mockConsoleWriter.Lines[9].ShouldEqual("foo");
             _mockConsoleWriter.Lines[19].ShouldEqual("foo");
         }
+
+        [TestMethod]
+        public void When_Run_Is_Called_With_Tokens_Values_Divisable_By_3_and_5_Should_Print_Both_Tokens()
+        {
+            // run fizz buzz
+            _runner.Run(new FizzBuzzArgs() { Lower = 1, Upper = 100, FizzToken = "foo", BuzzToken = "bar"});
+
+            // check lines
+            Assert.IsTrue(_mockConsoleWriter.Lines.Count >= 45);
+            _mockConsoleWriter.Lines[14].ShouldEqual("foobar");
+            _mockConsoleWriter.Lines[29].ShouldEqual("foobar");
+            _mockConsoleWriter.Lines[44].ShouldEqual("foobar");
+        }
     }
 
     public class MockConsoleWriter : IConsoleWriter
