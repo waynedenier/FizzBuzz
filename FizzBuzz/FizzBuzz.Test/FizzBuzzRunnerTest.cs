@@ -14,7 +14,7 @@ namespace FizzBuzz.Test
     {
         private readonly MockRepository _mockRepository = new MockRepository();
         private FizzBuzzRunner _runner;
-        private MockConsoleWriter _mockConsoleWriter;
+        private MockOutputWriter _mockOutputWriter;
 
         [TestInitialize]
         public void Init()
@@ -23,8 +23,8 @@ namespace FizzBuzz.Test
             _runner = new FizzBuzzRunner();
 
             // set up writer to track number of lines writen
-            _mockConsoleWriter = new MockConsoleWriter();
-            _runner.Writer = () => _mockConsoleWriter;
+            _mockOutputWriter = new MockOutputWriter();
+            _runner.Writer = () => _mockOutputWriter;
         }
 
         [TestMethod]
@@ -34,7 +34,7 @@ namespace FizzBuzz.Test
             _runner.Run(new FizzBuzzArgs() { Lower = 1, Upper = 100 });
 
             // check lines
-            _mockConsoleWriter.LinesWriten.ShouldEqual(100);
+            _mockOutputWriter.LinesWriten.ShouldEqual(100);
         }
 
         [TestMethod]
@@ -44,7 +44,7 @@ namespace FizzBuzz.Test
             _runner.Run(new FizzBuzzArgs() { Lower = 25, Upper = 300 });
 
             // check lines
-            _mockConsoleWriter.LinesWriten.ShouldEqual(276);
+            _mockOutputWriter.LinesWriten.ShouldEqual(276);
         }
 
         [TestMethod]
@@ -54,10 +54,10 @@ namespace FizzBuzz.Test
             _runner.Run(new FizzBuzzArgs() { Lower = 1, Upper = 100 });
 
             // check lines
-            Assert.IsTrue(_mockConsoleWriter.Lines.Count >= 9);
-            _mockConsoleWriter.Lines[2].ShouldEqual("Fizz");
-            _mockConsoleWriter.Lines[5].ShouldEqual("Fizz");
-            _mockConsoleWriter.Lines[8].ShouldEqual("Fizz");
+            Assert.IsTrue(_mockOutputWriter.Lines.Count >= 9);
+            _mockOutputWriter.Lines[2].ShouldEqual("Fizz");
+            _mockOutputWriter.Lines[5].ShouldEqual("Fizz");
+            _mockOutputWriter.Lines[8].ShouldEqual("Fizz");
         }
 
         [TestMethod]
@@ -67,10 +67,10 @@ namespace FizzBuzz.Test
             _runner.Run(new FizzBuzzArgs() { Lower = 1, Upper = 100 });
 
             // check lines
-            Assert.IsTrue(_mockConsoleWriter.Lines.Count >= 20);
-            _mockConsoleWriter.Lines[4].ShouldEqual("Buzz");
-            _mockConsoleWriter.Lines[9].ShouldEqual("Buzz");
-            _mockConsoleWriter.Lines[19].ShouldEqual("Buzz");
+            Assert.IsTrue(_mockOutputWriter.Lines.Count >= 20);
+            _mockOutputWriter.Lines[4].ShouldEqual("Buzz");
+            _mockOutputWriter.Lines[9].ShouldEqual("Buzz");
+            _mockOutputWriter.Lines[19].ShouldEqual("Buzz");
         }
 
         [TestMethod]
@@ -80,10 +80,10 @@ namespace FizzBuzz.Test
             _runner.Run(new FizzBuzzArgs() { Lower = 1, Upper = 100 });
 
             // check lines
-            Assert.IsTrue(_mockConsoleWriter.Lines.Count >= 45);
-            _mockConsoleWriter.Lines[14].ShouldEqual("FizzBuzz");
-            _mockConsoleWriter.Lines[29].ShouldEqual("FizzBuzz");
-            _mockConsoleWriter.Lines[44].ShouldEqual("FizzBuzz");
+            Assert.IsTrue(_mockOutputWriter.Lines.Count >= 45);
+            _mockOutputWriter.Lines[14].ShouldEqual("FizzBuzz");
+            _mockOutputWriter.Lines[29].ShouldEqual("FizzBuzz");
+            _mockOutputWriter.Lines[44].ShouldEqual("FizzBuzz");
         }
 
         [TestMethod]
@@ -93,10 +93,10 @@ namespace FizzBuzz.Test
             _runner.Run(new FizzBuzzArgs() { Lower = 1, Upper = 100, FizzToken = "foo"});
 
             // check lines
-            Assert.IsTrue(_mockConsoleWriter.Lines.Count >= 9);
-            _mockConsoleWriter.Lines[2].ShouldEqual("foo");
-            _mockConsoleWriter.Lines[5].ShouldEqual("foo");
-            _mockConsoleWriter.Lines[8].ShouldEqual("foo");
+            Assert.IsTrue(_mockOutputWriter.Lines.Count >= 9);
+            _mockOutputWriter.Lines[2].ShouldEqual("foo");
+            _mockOutputWriter.Lines[5].ShouldEqual("foo");
+            _mockOutputWriter.Lines[8].ShouldEqual("foo");
         }
 
         [TestMethod]
@@ -106,10 +106,10 @@ namespace FizzBuzz.Test
             _runner.Run(new FizzBuzzArgs() { Lower = 1, Upper = 100, BuzzToken = "foo"});
 
             // check lines
-            Assert.IsTrue(_mockConsoleWriter.Lines.Count >= 20);
-            _mockConsoleWriter.Lines[4].ShouldEqual("foo");
-            _mockConsoleWriter.Lines[9].ShouldEqual("foo");
-            _mockConsoleWriter.Lines[19].ShouldEqual("foo");
+            Assert.IsTrue(_mockOutputWriter.Lines.Count >= 20);
+            _mockOutputWriter.Lines[4].ShouldEqual("foo");
+            _mockOutputWriter.Lines[9].ShouldEqual("foo");
+            _mockOutputWriter.Lines[19].ShouldEqual("foo");
         }
 
         [TestMethod]
@@ -119,14 +119,14 @@ namespace FizzBuzz.Test
             _runner.Run(new FizzBuzzArgs() { Lower = 1, Upper = 100, FizzToken = "foo", BuzzToken = "bar"});
 
             // check lines
-            Assert.IsTrue(_mockConsoleWriter.Lines.Count >= 45);
-            _mockConsoleWriter.Lines[14].ShouldEqual("foobar");
-            _mockConsoleWriter.Lines[29].ShouldEqual("foobar");
-            _mockConsoleWriter.Lines[44].ShouldEqual("foobar");
+            Assert.IsTrue(_mockOutputWriter.Lines.Count >= 45);
+            _mockOutputWriter.Lines[14].ShouldEqual("foobar");
+            _mockOutputWriter.Lines[29].ShouldEqual("foobar");
+            _mockOutputWriter.Lines[44].ShouldEqual("foobar");
         }
     }
 
-    public class MockConsoleWriter : IConsoleWriter
+    public class MockOutputWriter : IOutputWriter
     {
         public int LinesWriten = 0;
         public List<string> Lines = new List<string>();
@@ -135,6 +135,11 @@ namespace FizzBuzz.Test
         {
             LinesWriten++;
             Lines.Add(line);
+        }
+
+        public void WriteFile(string path)
+        {
+            // do nothing
         }
     }
 }

@@ -7,7 +7,7 @@ namespace FizzBuzz.Core
 {
     public class FizzBuzzRunner
     {
-        public Func<IConsoleWriter> Writer = () => new ConsoleWriter();
+        public Func<IOutputWriter> Writer = () => new OutputWriter();
 
         public void Run(FizzBuzzArgs args)
         {
@@ -26,6 +26,9 @@ namespace FizzBuzz.Core
 
                 Writer().WriteLine(result);
             }
+
+            if(!string.IsNullOrWhiteSpace(args.OutputPath))
+                Writer().WriteFile(args.OutputPath);
         }
     }
 }

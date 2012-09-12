@@ -44,11 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArgumentParser.cs" />
-    <Compile Include="ConsoleWriter.cs" />
+    <Compile Include="OutputWriter.cs" />
     <Compile Include="FizzBuzzArgs.cs" />
     <Compile Include="FizzBuzzRunner.cs" />
-    <Compile Include="IConsoleWriter.cs" />
+    <Compile Include="IOutputWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WriteMode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

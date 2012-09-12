@@ -6,6 +6,7 @@ namespace FizzBuzz.Core
         public int Upper { get; set; }
         public string FizzToken { get; set; }
         public string BuzzToken { get; set; }
+        public string OutputPath { get; set; }
 
         public FizzBuzzArgs()
         {
