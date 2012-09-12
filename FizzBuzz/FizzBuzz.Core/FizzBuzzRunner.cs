@@ -19,7 +19,7 @@ namespace FizzBuzz.Core
                     result += args.FizzToken;
                 
                 if (i % 5 == 0)
-                    result += "Buzz";
+                    result += args.BuzzToken;
 
                 if (result == null)
                     result = i.ToString();
