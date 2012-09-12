@@ -44,7 +44,7 @@ namespace FizzBuzz.Test
             _runner.Run(25,300);
 
             // check lines
-            _mockConsoleWriter.LinesWriten.ShouldEqual(275);
+            _mockConsoleWriter.LinesWriten.ShouldEqual(276);
         }
 
         [TestMethod]

@@ -11,7 +11,7 @@ namespace FizzBuzz.Core
 
         public void Run(int lower, int upper)
         {
-            for (int i = 1; i <= 100; i++)
+            for (int i = lower; i <= upper; i++)
             {
                 string result = null;
 
